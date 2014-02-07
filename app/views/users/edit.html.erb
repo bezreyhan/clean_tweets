@@ -1,0 +1,24 @@
+<h1>Edit Your Info</h1>
+
+<%= form_for @user do |u| %>
+	<div>
+		<%= u.label :email %>
+	</div>
+
+	<div>
+		<%= u.text_field :email, :place_holder=> "What's your email" %>
+	</div>
+
+	<div>
+		<%= u.label :password %>
+	</div>
+
+	<div>
+		<%= u.password_field :password, :place_holder=>"Create a Password" %>
+	</div>
+
+	<div>
+		<%= u.submit %>
+	</div>	
+
+<% end %>		
