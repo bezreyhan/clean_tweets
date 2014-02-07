@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def create
   	@user = User.create(user_params)
+    flash[:notice] = "you signed up. Your email is #{params[:user][:email]}."
   	redirect_to users_path
   end
 

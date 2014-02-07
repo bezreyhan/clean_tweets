@@ -1,4 +1,7 @@
 CleanTweets::Application.routes.draw do
+  get "fav_tweets/index"
+  get "fav_tweets/new"
+  get "fav_tweets/destroy"
   # get "users" => "users#index" 
   # get "users/new" => "users#new"
   # post "users" => "users#create"
@@ -11,7 +14,7 @@ CleanTweets::Application.routes.draw do
   resources :users, only:[:index,:new,:create,:edit,:destroy,:update]
   get "users/welcome" => "users#welcome", as: "welcome_user"
   
-  delete "auths" => "auths#destroy"
+  delete "auths" => "auths#destroy", as: "auths"
   resources :auths, only:[:new, :create]
 
 

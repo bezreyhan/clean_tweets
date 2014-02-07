@@ -11,13 +11,19 @@
 	<% @users.each do |u| %>
 	<tr>
 		<td> <%= u.name %> </td>
-		<td> <%= u.user_name %> </td>
+		<td> <%= u.username %> </td>
 		<td> <%= u.email %> </td>
 		<td> <%= link_to "Edit", edit_user_path(u) %> </td>
 		<td> <%= link_to "Delete", user_path(u), method: 'delete' %> </td>
 	</tr>
 	<% end %>
 </table>
+
+<br />
+<br />
+<br />
+
+<%= button_to "Log Out", auths_path, method: 'delete' %>
 
 <%= params %>
 
