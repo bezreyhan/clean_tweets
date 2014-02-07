@@ -1,5 +1,7 @@
 <h1>Sign Up for Clean Tweets</h1>
 
+<% link_to "Log In", new_auth_path %>  
+
 <%= form_for @user do |u| %>
 	<div>
 		<%= u.label :email %>
@@ -22,3 +24,5 @@
 	</div>	
 
 <% end %>		
+
+<%= params %>

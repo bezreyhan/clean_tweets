@@ -1,11 +1,19 @@
 CleanTweets::Application.routes.draw do
-  get "users" => "users#index" 
-  get "users/new" => "users#new"
-  post "users" => "users#create"
-  get "users/:id/edit" => "users#edit", as: 'edit_user'
-  ##will not work if I name the route "update_user". Why?
-  patch "users/:id" => "users#update", as: 'user'
-  delete "users/:id" => "users#destroy", as: 'delete_user'
+  # get "users" => "users#index" 
+  # get "users/new" => "users#new"
+  # post "users" => "users#create"
+  # get "users/:id/edit" => "users#edit", as: 'edit_user'
+  # ##will not work if I name the route "update_user". Why?
+  # patch "users/:id" => "users#update", as: 'user'
+  # delete "users/:id" => "users#destroy", as: 'delete_user'
+
+  root to: 'users#new'
+  resources :users, only:[:index,:new,:create,:edit,:destroy,:update]
+  get "users/welcome" => "users#welcome", as: "welcome_user"
+  
+  delete "auths" => "auths#destroy"
+  resources :auths, only:[:new, :create]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,28 @@
+<h1>Login to get Authenticated</h1>
+
+<%= form_for @user, {url:"/auths", method:"post"} do |u| %>
+	<div>
+		<%= u.label :email %>
+	</div>
+
+	<div>
+		<%= u.text_field :email, :placeholder=> "What's your email" %>
+	</div>
+
+
+	<div>
+		<%= u.label :password %>
+	</div>
+
+	<div>
+		<%= u.text_field :password, :placeholder=> "Create a password" %>
+	</div>
+
+
+	<div>
+		<%= u.submit %>
+	</div>	
+
+<% end %>	
+
+<%= params %>
