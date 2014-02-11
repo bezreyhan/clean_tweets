@@ -31,7 +31,9 @@ class FavTweetsController < ApplicationController
   end
 
   def create
-  	@fav_tweet = FavTweet.create(fav_tweet_params) 
+  	@fav_tweet = FavTweet.create(tweet_id: params[:format])
+  	current_user.fav_tweets << @fav_tweet
+  	redirect_to show_tweets_path
   end
 
   def display

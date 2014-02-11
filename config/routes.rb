@@ -15,7 +15,7 @@ CleanTweets::Application.routes.draw do
   get "users/stream" => "users#stream", as: "stream_user"
 
   resources :fav_tweets, only:[:index, :new, :destroy]
-  get "fav_tweets/show_tweets" => "fav_tweets#show_tweets"
+  get "fav_tweets/show_tweets" => "fav_tweets#show_tweets", as: "show_tweets"
   post "fav_tweets" => "fav_tweets#create", as: "create_fav_tweet"
   get "fav_tweets/display" => "fav_tweets#display", as: "display_fav_tweet"
 
