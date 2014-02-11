@@ -12,7 +12,7 @@ class User
 	field :salt, type: String
 	field :hashed_password, type: String
 
-	has_many :favtweets
+	has_many :fav_tweets
 
 	def authenticated? pwd
 	  	self.hashed_password ==

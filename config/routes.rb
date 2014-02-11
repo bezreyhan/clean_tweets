@@ -1,7 +1,7 @@
 CleanTweets::Application.routes.draw do
-  get "fav_tweets/index"
-  get "fav_tweets/new"
-  get "fav_tweets/destroy"
+  # get "fav_tweets/index"
+  # get "fav_tweets/new"
+  # get "fav_tweets/destroy"
   # get "users" => "users#index" 
   # get "users/new" => "users#new"
   # post "users" => "users#create"
@@ -12,7 +12,13 @@ CleanTweets::Application.routes.draw do
 
   root to: 'users#new'
   resources :users, only:[:index,:new,:create,:edit,:destroy,:update]
-  get "users/welcome" => "users#welcome", as: "welcome_user"
+  get "users/stream" => "users#stream", as: "stream_user"
+
+  resources :fav_tweets, only:[:index, :new, :destroy]
+  get "fav_tweets/show_tweets" => "fav_tweets#show_tweets"
+  post "fav_tweets" => "fav_tweets#create", as: "create_fav_tweet"
+  get "fav_tweets/display" => "fav_tweets#display", as: "display_fav_tweet"
+
   
   delete "auths" => "auths#destroy", as: "auths"
   resources :auths, only:[:new, :create]

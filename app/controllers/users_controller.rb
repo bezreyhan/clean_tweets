@@ -1,3 +1,4 @@
+
 class UsersController < ApplicationController
   
   def index
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
   def create
   	@user = User.create(user_params)
     flash[:notice] = "you signed up. Your email is #{params[:user][:email]}."
-  	redirect_to users_path
+  	redirect_to stream_user_path(user_params)
   end
 
   def edit
@@ -29,7 +30,8 @@ class UsersController < ApplicationController
   	redirect_to users_path
   end
 
-  def welcome
+  def stream
+
   end	
 
   private 
