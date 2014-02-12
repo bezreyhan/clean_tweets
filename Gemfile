@@ -7,6 +7,7 @@ gem 'bcrypt-ruby', github: 'codahale/bcrypt-ruby'
 gem 'twitter'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'rails_12factor'
 
 
 # Use sqlite3 as the database for Active Record
