@@ -5,6 +5,8 @@ class FavTweet
   field :text, type: String
   field :username, type: String
 
-  belongs_to :user
+  has_and_belongs_to_many :users
+
+
 
 end

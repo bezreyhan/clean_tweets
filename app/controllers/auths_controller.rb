@@ -1,3 +1,4 @@
+
 class AuthsController < ApplicationController
 
 	# show login form
@@ -13,7 +14,7 @@ class AuthsController < ApplicationController
 
 	#Log them in
 	def create
-		if !(User.where(username: params[:user][:email]).empty?)
+		if !(User.where(email: params[:user][:email]).empty?)
 			user = User.find_by(email: params[:user][:email])
 			# puts "***************************#{params}******************"
 			if user.authenticated?(params[:user][:password])
@@ -23,11 +24,11 @@ class AuthsController < ApplicationController
 				flash[:notice] = "You are logged in"
 			else 
 				redirect_to users_path	
-				flash[:notice] = "Your Email or Password did not Match"
+				flash[:notice] = "Your Email and Password did not Match "
 			end
 		else
 			redirect_to users_path	
-			flash[:notice] = "Your Email or Password did not Match"	
+			flash[:notice] = "We couldn't find that email. Try again or create an account."	
 		end	
 	end
 

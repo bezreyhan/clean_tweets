@@ -1,0 +1,11 @@
+<%= notice %>
+
+<h1>Look at Your Favorite Tweets</h1>
+
+<div>
+	<% @fav_tweet_ids.each do |id| %>
+	<div><%= @client.status(id).user.user_name %></div>
+	<div><%= @client.status(id).text %></div>
+	<% end %>
+
+</div>
