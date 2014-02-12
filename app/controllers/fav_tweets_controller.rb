@@ -33,10 +33,11 @@ class FavTweetsController < ApplicationController
 	end
 
 	def create
-		# an array of tweet_ids of the current_users favorite tweets
-		fav_tweet_ids = current_user.fav_tweets.map { |tweet| tweet.tweet_id }
-		# if that tweet was alreday favorited by current user then don't create tweet. 
-		if !(fav_tweet_ids.include?(params[:format].to_i))
+		## an array of tweet_ids of the current_users favorite tweets
+		# fav_tweet_ids = current_user.fav_tweets.map { |tweet| tweet.tweet_id }
+		## if that tweet was alreday favorited by current user then don't create tweet.
+		if FavTweet.all.where(tweet_id: params[:format]).empty?
+		# if !(fav_tweet_ids.include?(params[:format].to_i))
 			@fav_tweet = FavTweet.create(tweet_id: params[:format]) 
 			current_user.fav_tweets << @fav_tweet
 		else
