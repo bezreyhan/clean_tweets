@@ -17,27 +17,17 @@ class FavTweetsController < ApplicationController
 	end
 
 	def show_tweets
+		ht = @@client.home_timeline
+		@home_timeline = ht.find_all {|tweet| tweet.text.include?("http")}
 
-
-	@home_timeline = @@client.home_timeline
-
-	# def home_timeline
-	# 	keep_list = []
-	# 	@@client.home_timeline.each do |tweet|
-	# 		if tweet.text.include? "http"
-	# 			keep_list << tweet
-	# 		end
-	# 	end
-	# 	return keep_list		
-	# end	
+		# def remove_no_links 
+		# 	return @home_timeline.map {|tweet| tweet.text.include?("http")}
+		# end		
 	end
 
 	def create
-		## an array of tweet_ids of the current_users favorite tweets
-		# fav_tweet_ids = current_user.fav_tweets.map { |tweet| tweet.tweet_id }
-		## if that tweet was alreday favorited by current user then don't create tweet.
+		## if that tweet was already created then don't create tweet.
 		if FavTweet.all.where(tweet_id: params[:format]).empty?
-		# if !(fav_tweet_ids.include?(params[:format].to_i))
 			@fav_tweet = FavTweet.create(tweet_id: params[:format]) 
 			current_user.fav_tweets << @fav_tweet
 		else
@@ -63,13 +53,15 @@ class FavTweetsController < ApplicationController
 
 	def fav_tweet_params 
 		params.require(:fav_tweet).permit(:username, :text, :id)
-	end		
+	end
+
+
 
 end
 
 
 
- 	#  	client = Twitter::REST::Client.new do |config|
+ # 	client = Twitter::REST::Client.new do |config|
 	#   config.consumer_key        = "EGtAiRXlnFzX90MPtkHA"
 	#   config.consumer_secret     = "OkDiA6C0Ej2yBg9Jh6Rdhoxc25b5aMfQLRwbY1Mw0U"
 	#   config.access_token        = "1954867038-kJt856202uhmLi0yP4PtUgnLaUHHpzltEpYqaI6"

@@ -1,7 +1,7 @@
 <%= notice %>
 
 <div class="time_line">
-	<%= @home_timeline.each do |tweet| %>
+	<% @home_timeline.each do |tweet| %>
 
 	<div class="tweet"> 
 		<div class="user_name"> <%= tweet.user.user_name %> </div>
