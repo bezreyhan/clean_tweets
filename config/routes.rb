@@ -24,6 +24,8 @@ CleanTweets::Application.routes.draw do
   delete "auths" => "auths#destroy", as: "auths"
   resources :auths, only:[:new, :create]
 
+  match "/auth/twitter/callback" => "users#welcome", via: [:get, :post]
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

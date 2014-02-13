@@ -1,4 +1,6 @@
 
+require 'yaml'
+
 class UsersController < ApplicationController
   
   def index
@@ -35,6 +37,11 @@ class UsersController < ApplicationController
   	@user.destroy
   	redirect_to users_path
   end
+
+  def welcome
+    current_user.from_omniauth(request.env['omniauth.auth'])
+    # raise request.env['omniauth.auth'].to_yaml
+  end   
 
   private 
 
