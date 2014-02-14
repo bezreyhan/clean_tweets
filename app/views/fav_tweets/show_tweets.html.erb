@@ -1,17 +1,24 @@
 <%= notice %>
 <%= render "layouts/navbar" %>
-<div class="time_line">
-	<% @home_timeline.each do |tweet| %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-3 col-sm-2 col-xs-1"></div>
+		<div class="col-md-6 col-sm-8 col-xs-10 time_line">
+			<% @home_timeline.each do |tweet| %>
 
-	<div class="tweet"> 
-		<div class="user_name"> @<%= tweet.user.user_name %> </div>
-		<div class="favorite">
-			<%= button_to "Favorite", create_fav_tweet_path(tweet.id), method: 'post', class:'btn btn-primary' %>
-		</div>	
-		<div class="text"> <%= tweet.text %> </div>
-		
-	</div>
+			<div class="tweet">
+				<div class="user_name"> @<%= tweet.user.user_name %> </div>
+				<div class="favorite">
+					<%= button_to "Favorite", create_fav_tweet_path(tweet.id), method: 'post', class:'btn btn-primary' %>
+				</div>	
+				<div class="text"> <%= tweet.text %> </div>
+			</div>
+			<% end %>
+		</div>
+		<div class="col-md-3 col-sm-2 col-xs-1"></div>
+	</div>	
 
-	<% end %>
 </div>
+
+
 

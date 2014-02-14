@@ -4,15 +4,12 @@
 
 .time_line {
 	border: 1px solid black;
-	width: 504px;
-	margin: 0 auto;
 }
 
 .tweet {
-	margin: 0 auto;
-	width: 500px;
-	height: 100px;
 	border-bottom: 1px solid black;
+	min-height: 100px;
+	padding: 10px 0;
 }
 
 .favorite {
