@@ -20,14 +20,14 @@ class AuthsController < ApplicationController
 			if user.authenticated?(params[:user][:password])
 				session[:user_id] = user.id
 				#### !!!! update this when you create a tweets page !!!!!
-				redirect_to users_path
+				redirect_to twitter_auth_path
 				flash[:notice] = "You are logged in"
 			else 
-				redirect_to users_path	
+				redirect_to new_auth_path	
 				flash[:notice] = "Your Email and Password did not Match "
 			end
 		else
-			redirect_to users_path	
+			redirect_to new_auth_path	
 			flash[:notice] = "We couldn't find that email. Try again or create an account."	
 		end	
 	end

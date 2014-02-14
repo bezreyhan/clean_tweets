@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def create
     if !(User.where(email: user_params[:email]).empty?)
       flash[:notice] = "This email already exists"
-      redirect_to stream_user_path(user_params)
+      redirect_to new_user_path(user_params)
     else
       @user = User.create(user_params)  
       flash[:notice] = "you signed up. Your email is #{params[:user][:email]}."
@@ -42,6 +42,7 @@ class UsersController < ApplicationController
     current_user.from_omniauth(request.env['omniauth.auth'])
     # raise request.env['omniauth.auth'].to_yaml
   end   
+
 
   private 
 

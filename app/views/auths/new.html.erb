@@ -1,28 +1,29 @@
-<h1>Login to get Authenticated</h1>
-
+<%= render "layouts/navbar" %>
+<%= notice %>
+<div class="container">
 <%= form_for @user, {url:"/auths", method:"post"} do |u| %>
-	<div>
-		<%= u.label :email %>
-	</div>
+	<div class="row">
+		<div class="col-md-4 col-sm-3"></div>
+		<div class="col-md-4 col-sm-6">
+			<h1>Login to Get Your Tweets Cleaned</h1>
+			<div>
+				<%= u.label :email %>
+				<%= u.text_field :email, :place_holder=> "What's your email", class: "form-control" %>
+			</div>
 
-	<div>
-		<%= u.text_field :email, :placeholder=> "What's your email" %>
-	</div>
+			<div>
+				<%= u.label :password %>
+				<%= u.password_field :password, :place_holder=>"Create a Password", class: "form-control" %>
+			</div>
 
+			<div>
+				<%= u.submit 'Submit', class: "btn btn-primary submit" %>
+			</div>
 
-	<div>
-		<%= u.label :password %>
-	</div>
+		</div>
+		<div class="col-md-4 col-sm-3"></div>	
+	</div>		
+</div>
+<% end %>
 
-	<div>
-		<%= u.text_field :password, :placeholder=> "Create a password" %>
-	</div>
-
-
-	<div>
-		<%= u.submit %>
-	</div>	
-
-<% end %>	
-
-<%= params %>
+<%=params%>

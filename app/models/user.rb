@@ -47,8 +47,10 @@ class User
 	private 
 
   	def hash_the_password
-  		self.salt = BCrypt::Engine.generate_salt
-  		self.hashed_password = BCrypt::Engine.hash_secret self.password, self.salt
-  		self.password = nil
+  		unless self.password == nil
+	  		self.salt = BCrypt::Engine.generate_salt
+	  		self.hashed_password = BCrypt::Engine.hash_secret self.password, self.salt
+	  		self.password = nil
+	  	end	
   	end	
 end

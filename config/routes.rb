@@ -15,6 +15,7 @@ CleanTweets::Application.routes.draw do
   get "users/stream" => "users#stream", as: "stream_user"
 
   resources :fav_tweets, only:[:index, :new, :destroy]
+  get "auth/twitter" => "fav_tweets#show_tweets", as: "twitter_auth"
   get "fav_tweets/show_tweets" => "fav_tweets#show_tweets", as: "show_tweets"
   post "fav_tweets" => "fav_tweets#create", as: "create_fav_tweet"
   get "fav_tweets/display" => "fav_tweets#display", as: "display_fav_tweet"
@@ -24,7 +25,8 @@ CleanTweets::Application.routes.draw do
   delete "auths" => "auths#destroy", as: "auths"
   resources :auths, only:[:new, :create]
 
-  match "/auth/twitter/callback" => "users#welcome", via: [:get, :post]
+
+  match "/auth/twitter/callback" => "fav_tweets#show_tweets", via: [:get, :post]
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -17,6 +17,7 @@ class FavTweetsController < ApplicationController
 	end
 
 	def show_tweets
+		current_user.from_omniauth(request.env['omniauth.auth'])
 		# ht = @@client.home_timeline
 		# @home_timeline = ht.find_all {|tweet| tweet.text.include?("http")}
 		ht = current_user.twitter.home_timeline
@@ -29,7 +30,7 @@ class FavTweetsController < ApplicationController
 			@fav_tweet = FavTweet.create(tweet_id: params[:format]) 
 			current_user.fav_tweets << @fav_tweet
 		else
-			flash[:notice] = "You alreday favorited that tweet"
+			flash[:notice] = "You already favorited that tweet"
 		end
 			redirect_to show_tweets_path
 

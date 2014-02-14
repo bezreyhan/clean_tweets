@@ -8,6 +8,7 @@ gem 'twitter'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'rails_12factor'
+gem 'bootstrap-sass', '~> 3.1.0'
 
 
 # Use sqlite3 as the database for Active Record

@@ -6,8 +6,7 @@
 	<div class="tweet"> 
 		<div class="user_name"> <%= tweet.user.user_name %> </div>
 		<div class="text"> <%= tweet.text %> </div>
-		<%= button_to "Favorite", create_fav_tweet_path(tweet.id), method: 'post' %>
-		<%= button_to "Show", display_fav_tweet_path(tweet), method: 'get' %>
+		<%= button_to "Favorite", create_fav_tweet_path(tweet.id), method: 'post', class:'btn btn-primary' %>
 	</div>
 
 	<% end %>
