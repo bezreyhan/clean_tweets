@@ -14,7 +14,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a>Hi <%= current_user.name %></a></li>
+        <% unless current_user == nil %>
+          <li><a>Hi <%= current_user.name %></a></li>
+        <% end %>  
         <li><%=link_to get_page, get_route %></li>
       </ul>
     </div><!-- /.navbar-collapse -->

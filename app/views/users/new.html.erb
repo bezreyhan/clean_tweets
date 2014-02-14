@@ -2,13 +2,13 @@
 <%= notice %>
 
 
-<div class="container">
+<div class="container-fluid">
 <%= form_for @user do |u| %>
 	<div class="row">
-		<div class="col-md-4 col-sm-3"></div>
-		<div class="col-md-4 col-sm-6">
-			<h1>Sign up for Clean Tweets</h1>
-			<h2>Read What Matters</h2>
+		<div class="col-md-5 description"></div>
+		<div class="col-md-7 description">
+			<h1 class="headline">Sign up for Clean Tweets</h1>
+			<h2 class="tagline">Read What Matters</h2>
 			<div>
 				<%= u.label :email %>
 				<%= u.text_field :email, :place_holder=> "What's your email", class: "form-control" %>
@@ -24,7 +24,6 @@
 			</div>
 
 		</div>
-		<div class="col-md-4 col-sm-3"></div>	
 	</div>		
 </div>
 <% end %>
