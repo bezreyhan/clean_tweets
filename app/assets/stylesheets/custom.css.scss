@@ -53,12 +53,9 @@ html, body, .container-fluid, .row, .description {
 	height: 100%;
 }
 
-
-
-
-
-
-
+/*----------------------------------------
+              show_tweets
+----------------------------------------*/
 
 .time_line {
   border: 1px solid black;
@@ -67,21 +64,12 @@ html, body, .container-fluid, .row, .description {
 }
 
 .tweet {
-  border: 1px solid black;
+  border-bottom: 1px solid black;
   min-height: 100px;
   padding: 10px 0;
-  width: 500px;
 }
 
 .btn_favorite {
   float: right;
   background-color: rgb(0, 199, 254);
-}
-
-.right {
-  display: inline-block;
-}
-
-.user_name {
-  display: inline-block;
 }
