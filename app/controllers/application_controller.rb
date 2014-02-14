@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   		if params[:action] == "new"
   			"Sign Up"
   		end
-  	end			
+  	end		
   end
 
 

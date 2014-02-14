@@ -1,12 +1,15 @@
 <%= notice %>
-
+<%= render "layouts/navbar" %>
 <div class="time_line">
 	<% @home_timeline.each do |tweet| %>
 
 	<div class="tweet"> 
-		<div class="user_name"> <%= tweet.user.user_name %> </div>
+		<div class="user_name"> @<%= tweet.user.user_name %> </div>
+		<div class="favorite">
+			<%= button_to "Favorite", create_fav_tweet_path(tweet.id), method: 'post', class:'btn btn-primary' %>
+		</div>	
 		<div class="text"> <%= tweet.text %> </div>
-		<%= button_to "Favorite", create_fav_tweet_path(tweet.id), method: 'post', class:'btn btn-primary' %>
+		
 	</div>
 
 	<% end %>
