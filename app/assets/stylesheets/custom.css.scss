@@ -8,7 +8,23 @@
   font-family: 'Lobster Two';
   font-weight: bold;
   font-size: 36px; 
+  /*color: rgb(0, 199, 254);*/
+}
+
+.navbar-default .navbar-brand:hover {
   color: rgb(0, 199, 254);
+}
+
+.navbar-default .navbar_login {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 9px;
+  background-color: rgb(0, 199, 254);
+  min-width: 85px;
+}
+
+.navbar-default .navbar-nav .navbar_login:hover {
+  background-color: rgb(254, 182, 0);
 }
 
 html, body, .container-fluid, .row, .description {
@@ -37,3 +53,35 @@ html, body, .container-fluid, .row, .description {
 	height: 100%;
 }
 
+
+
+
+
+
+
+
+.time_line {
+  border: 1px solid black;
+  border-radius: 10px;
+  border-color: rgb(0, 199, 254);
+}
+
+.tweet {
+  border: 1px solid black;
+  min-height: 100px;
+  padding: 10px 0;
+  width: 500px;
+}
+
+.btn_favorite {
+  float: right;
+  background-color: rgb(0, 199, 254);
+}
+
+.right {
+  display: inline-block;
+}
+
+.user_name {
+  display: inline-block;
+}

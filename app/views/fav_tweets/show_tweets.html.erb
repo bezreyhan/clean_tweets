@@ -1,4 +1,4 @@
-<%= notice %>
+
 <%= render "layouts/navbar" %>
 <div class="container">
 	<div class="row">
@@ -8,8 +8,8 @@
 
 			<div class="tweet">
 				<div class="user_name"> @<%= tweet.user.user_name %> </div>
-				<div class="favorite">
-					<%= button_to "Favorite", create_fav_tweet_path(tweet.id), method: 'post', class:'btn btn-primary' %>
+				<div>
+					<%= button_to "Favorite", create_fav_tweet_path(tweet.id), method: 'post', class:'btn btn_favorite' %>
 				</div>	
 				<div class="text"> <%= tweet.text %> </div>
 			</div>
@@ -17,8 +17,8 @@
 		</div>
 		<div class="col-md-3 col-sm-2 col-xs-1"></div>
 	</div>	
-
 </div>
+
 
 
 

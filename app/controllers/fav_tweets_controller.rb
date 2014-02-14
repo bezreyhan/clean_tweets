@@ -18,8 +18,6 @@ class FavTweetsController < ApplicationController
 
 	def show_tweets
 		current_user.from_omniauth(request.env['omniauth.auth'])
-		# ht = @@client.home_timeline
-		# @home_timeline = ht.find_all {|tweet| tweet.text.include?("http")}
 		ht = current_user.twitter.home_timeline
 		@home_timeline = ht.find_all {|tweet| tweet.text.include?("http")}
 	end
