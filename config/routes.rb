@@ -26,7 +26,7 @@ CleanTweets::Application.routes.draw do
   resources :auths, only:[:new, :create]
 
 
-  match "/auth/twitter/callback" => "fav_tweets#show_tweets", via: [:get, :post]
+  match "/auth/twitter/callback" => "fav_tweets#get_user_data", via: [:get, :post]
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -16,8 +16,13 @@ class FavTweetsController < ApplicationController
 	def destroy
 	end
 
-	def show_tweets
+	def get_user_data
 		current_user.from_omniauth(request.env['omniauth.auth'])
+		redirect_to show_tweets_path
+	end 	
+
+	def show_tweets
+		# current_user.from_omniauth(request.env['omniauth.auth'])
 		ht = current_user.twitter.home_timeline
 		@home_timeline = ht.find_all {|tweet| tweet.text.include?("http")}
 	end
