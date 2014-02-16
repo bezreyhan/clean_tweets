@@ -28,15 +28,19 @@ class FavTweetsController < ApplicationController
 	end
 
 	def create
-		## if that tweet was already created then don't create tweet.
+		## if that tweet was never created then create and add it to current user's fav_tweets
 		if FavTweet.all.where(tweet_id: params[:format]).empty?
 			@fav_tweet = FavTweet.create(tweet_id: params[:format]) 
 			current_user.fav_tweets << @fav_tweet
+		## if the tweet was created, check if exists in current_user's fav_tweets	
+		elsif check_fav_tweets(params[:fromat]) == true
+				flash[:notice] = "You already favorited that tweet"
 		else
-			flash[:notice] = "You already favorited that tweet"
-		end
-			redirect_to show_tweets_path
-
+			## if the tweet doesn't exist in the current_user's fav_tweets then add it.
+			@fav_tweet = FavTweet.all.find_by(tweet_id: params[:format])
+			current_user.fav_tweets << @fav_tweet
+		end	 
+		redirect_to show_tweets_path
 	end
 
 	def favorites
@@ -56,4 +60,13 @@ class FavTweetsController < ApplicationController
 	def fav_tweet_params 
 		params.require(:fav_tweet).permit(:username, :text, :id)
 	end
+
+	def check_fav_tweets(tweet_id)
+		current_user.fav_tweets.each do |tweet|
+			if tweet.tweet_id == tweet_id
+				return true
+			end
+		end	
+	end	
+
 end
