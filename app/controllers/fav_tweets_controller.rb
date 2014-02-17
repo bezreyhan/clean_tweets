@@ -1,11 +1,11 @@
 class FavTweetsController < ApplicationController
 
-	@@client = Twitter::REST::Client.new do |config|
-	  config.consumer_key        = "EGtAiRXlnFzX90MPtkHA"
-	  config.consumer_secret     = "OkDiA6C0Ej2yBg9Jh6Rdhoxc25b5aMfQLRwbY1Mw0U"
-	  config.access_token        = "1954867038-kJt856202uhmLi0yP4PtUgnLaUHHpzltEpYqaI6"
-	  config.access_token_secret = "UplyBRhTgfmSE5EICNsTVTV8s9A7u4RypqIYQd5vWXMpu"
-	end
+	# @@client = Twitter::REST::Client.new do |config|
+	#   config.consumer_key        = "EGtAiRXlnFzX90MPtkHA"
+	#   config.consumer_secret     = "OkDiA6C0Ej2yBg9Jh6Rdhoxc25b5aMfQLRwbY1Mw0U"
+	#   config.access_token        = "1954867038-kJt856202uhmLi0yP4PtUgnLaUHHpzltEpYqaI6"
+	#   config.access_token_secret = "UplyBRhTgfmSE5EICNsTVTV8s9A7u4RypqIYQd5vWXMpu"
+	# end
 	
 	def index
 	end
@@ -24,21 +24,19 @@ class FavTweetsController < ApplicationController
 	def show_tweets
 		# current_user.from_omniauth(request.env['omniauth.auth'])
 		ht = current_user.twitter.home_timeline
-		tweet_array = 2.times.collect do 
-			ht.take(40)
-		end
-		tweets = tweet_array[0]
 		## filter out tweets that don't have a link
-		@home_timeline = tweets.find_all {|tweet| tweet.text.include?("http")}
+		@home_timeline = ht.find_all {|tweet| tweet.text.include?("http")}
 	end
 
 	def create
+		# puts "************************#{params[:format]}******************************"
+		# puts "************************#{current_user.twitter.status(params[:format]).user.user_name}******************************"
 		## if that tweet was never created then create and add it to current user's fav_tweets
 		if FavTweet.all.where(tweet_id: params[:format]).empty?
 			@fav_tweet = FavTweet.create(tweet_id: params[:format]) 
 			current_user.fav_tweets << @fav_tweet
 		## if the tweet was created, check if exists in current_user's fav_tweets	
-		elsif check_fav_tweets(params[:fromat]) == true
+		elsif check_fav_tweets(params[:format]) == true
 				flash[:notice] = "You already favorited that tweet"
 		else
 			## if the tweet doesn't exist in the current_user's fav_tweets then add it.
@@ -52,12 +50,12 @@ class FavTweetsController < ApplicationController
 		@fav_tweets = current_user.fav_tweets
 		@fav_tweet_ids = @fav_tweets.map { |tweet| tweet.tweet_id}
 
-		@client = Twitter::REST::Client.new do |config|
-		  config.consumer_key        = "EGtAiRXlnFzX90MPtkHA"
-		  config.consumer_secret     = "OkDiA6C0Ej2yBg9Jh6Rdhoxc25b5aMfQLRwbY1Mw0U"
-		  config.access_token        = "1954867038-kJt856202uhmLi0yP4PtUgnLaUHHpzltEpYqaI6"
-		  config.access_token_secret = "UplyBRhTgfmSE5EICNsTVTV8s9A7u4RypqIYQd5vWXMpu"
-		end
+		# @client = Twitter::REST::Client.new do |config|
+		#   config.consumer_key        = "EGtAiRXlnFzX90MPtkHA"
+		#   config.consumer_secret     = "OkDiA6C0Ej2yBg9Jh6Rdhoxc25b5aMfQLRwbY1Mw0U"
+		#   config.access_token        = "1954867038-kJt856202uhmLi0yP4PtUgnLaUHHpzltEpYqaI6"
+		#   config.access_token_secret = "UplyBRhTgfmSE5EICNsTVTV8s9A7u4RypqIYQd5vWXMpu"
+		# end
 	end
 
 	def delete_favorite

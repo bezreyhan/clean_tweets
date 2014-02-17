@@ -5,7 +5,7 @@
 <div class="container-fluid">
 <%= form_for @user do |u| %>
 	<div class="row">
-		<div class="col-md-5 description"></div>
+		<div class="col-md-5"><i class="fa fa-twitter"></i></div>
 		<div class="col-md-7 description">
 			<h1 class="headline">Sign up for Clean Tweets</h1>
 			<h2 class="tagline">Read What Matters</h2>
@@ -20,7 +20,7 @@
 			</div>
 
 			<div>
-				<%= u.submit 'Submit', class: "btn btn-primary submit" %>
+				<%= u.submit 'Submit', class: "btn submit" %>
 			</div>
 
 		</div>

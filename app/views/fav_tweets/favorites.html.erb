@@ -10,7 +10,8 @@
 
         <div class="tweet_shell">
           <div class="tweet">
-          	<div class="user_name"><%=link_to "@"+@client.status(id).user.user_name,"http://www.twitter.com/"+@client.status(id).user.user_name %>
+            <!-- <div><#%= id %></div> -->
+          	<div class="user_name"><%=link_to "@"+current_user.twitter.status(id).user.user_name,"http://www.twitter.com/"+current_user.twitter.status(id).user.user_name %>
             </div>
             <div>
               <%= link_to raw("<span class='glyphicon glyphicon-remove'></span>"), delete_favorite_path(id), method: 'get', class:'btn_favorite' %>

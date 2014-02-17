@@ -9,6 +9,7 @@
 
 				<div class="tweet_shell">
 					<div class="tweet">
+						<!-- <div><#%=tweet.id%></div> -->
 						<div class="user_name"><%=link_to "@"+tweet.user.user_name, "http://www.twitter.com/" + tweet.user.user_name, class:'user_name' %> </div>
 						<div>
 							<%= link_to raw("<span class='glyphicon glyphicon-heart-empty'></span>"), create_fav_tweet_path(tweet.id), method: 'post', class:'btn_favorite' %>
