@@ -57,19 +57,52 @@ html, body, .container-fluid, .row, .description {
               show_tweets
 ----------------------------------------*/
 
+.container-fluid.show_tweets_container {
+  background-color: rgb(0, 199, 254);
+}
+
 .time_line {
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 10px;
-  border-color: rgb(0, 199, 254);
+  padding: 0;
+  background-color: white;
+  margin-top: 15px;
+}
+
+.tweet_shell:hover {
+  border-radius: 10px;
+  background-color: rgb(234,251,255);
 }
 
 .tweet {
   border-bottom: 1px solid black;
   min-height: 100px;
-  padding: 10px 0;
+  padding: 10px 10px 0;
+  position: relative;
 }
+
+.user_name {
+  margin-bottom: 5px;
+  color: #777777;
+}
+
+.user_name:hover {
+  color: rgb(0, 199, 254);
+} 
 
 .btn_favorite {
   float: right;
-  background-color: rgb(0, 199, 254);
+  font-size: 18px;
+  position: absolute;
+  top: 4px;
+  right:4px;
+  color: #777777;
 }
+
+.btn_favorite:hover {
+  color: rgb(0, 199, 254);
+}
+
+
+
+

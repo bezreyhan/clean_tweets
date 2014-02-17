@@ -1,23 +1,28 @@
 
 <%= render "layouts/navbar" %>
-<div class="container">
+
+<div class="container-fluid show_tweets_container">
 	<div class="row">
-		<div class="col-md-3 col-sm-2 col-xs-1"></div>
-		<div class="col-md-6 col-sm-8 col-xs-10 time_line">
+		<div class="col-md-3 col-sm-3 col-xs-1"></div>
+		<div class="col-md-6 col-sm-6 col-xs-10 time_line">
 			<% @home_timeline.each do |tweet| %>
 
-			<div class="tweet">
-				<div class="user_name"> @<%= tweet.user.user_name %> </div>
-				<div>
-					<%= button_to "Favorite", create_fav_tweet_path(tweet.id), method: 'post', class:'btn btn_favorite' %>
-				</div>	
-				<div class="text"> <%= tweet.text %> </div>
-			</div>
+				<div class="tweet_shell">
+					<div class="tweet">
+						<div class="user_name"><%=link_to "@"+tweet.user.user_name, "http://www.twitter.com/" + tweet.user.user_name, class:'user_name' %> </div>
+						<div>
+							<%= link_to raw("<span class='glyphicon glyphicon-heart-empty'></span>"), create_fav_tweet_path(tweet.id), method: 'post', class:'btn_favorite' %>
+						</div>	
+						<div class="text"> <%= tweet.text %> </div>
+					</div>
+				</div>
+					
 			<% end %>
 		</div>
-		<div class="col-md-3 col-sm-2 col-xs-1"></div>
+		<div class="col-md-3 col-sm-3 col-xs-1"></div>
 	</div>	
 </div>
+
 
 
 

@@ -24,7 +24,12 @@ class FavTweetsController < ApplicationController
 	def show_tweets
 		# current_user.from_omniauth(request.env['omniauth.auth'])
 		ht = current_user.twitter.home_timeline
-		@home_timeline = ht.find_all {|tweet| tweet.text.include?("http")}
+		tweet_array = 2.times.collect do 
+			ht.take(40)
+		end
+		tweets = tweet_array[0]
+		## filter out tweets that don't have a link
+		@home_timeline = tweets.find_all {|tweet| tweet.text.include?("http")}
 	end
 
 	def create
@@ -53,7 +58,21 @@ class FavTweetsController < ApplicationController
 		  config.access_token        = "1954867038-kJt856202uhmLi0yP4PtUgnLaUHHpzltEpYqaI6"
 		  config.access_token_secret = "UplyBRhTgfmSE5EICNsTVTV8s9A7u4RypqIYQd5vWXMpu"
 		end
-	end		
+	end
+
+	def delete_favorite
+		tweets = current_user.fav_tweets
+		tweets.where(tweet_id: params[:format]).delete_all
+		current_user.save!
+		# tweets.each do |tweet|
+		# 	if tweet.tweet_id == params[:format]
+		# 		tweets - [tweet]
+		# 		current_user.save!
+		# 	end	
+		# break
+		# end
+		redirect_to favorites_fav_tweet_path
+	end	
 
 	private 
 

@@ -19,7 +19,8 @@ CleanTweets::Application.routes.draw do
   get "fav_tweets/show_tweets" => "fav_tweets#show_tweets", as: "show_tweets"
   post "fav_tweets" => "fav_tweets#create", as: "create_fav_tweet"
   get "fav_tweets/display" => "fav_tweets#display", as: "display_fav_tweet"
-  get "fav_tweets/favorites" => "fav_tweets#favorites"
+  get "fav_tweets/favorites" => "fav_tweets#favorites", as: "favorites_fav_tweet"
+  get "fav_tweets/favorites" => "fav_tweets#delete_favorite", as: "delete_favorite"
 
   
   delete "auths" => "auths#destroy", as: "auths"

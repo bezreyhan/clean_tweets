@@ -2,9 +2,34 @@
 
 <h1>Look at Your Favorite Tweets</h1>
 
-<div>
-	<% @fav_tweet_ids.each do |id| %>
-	<div><%= @client.status(id).user.user_name %></div>
-	<div><%= @client.status(id).text %></div>
-	<% end %>
+<div class="container-fluid show_tweets_container">
+  <div class="row">
+    <div class="col-md-3 col-sm-3 col-xs-1"></div>
+    <div class="col-md-6 col-sm-6 col-xs-10 time_line">
+    	<% @fav_tweet_ids.each do |id| %>
+
+        <div class="tweet_shell">
+          <div class="tweet">
+          	<div class="user_name"><%=link_to "@"+@client.status(id).user.user_name,"http://www.twitter.com/"+@client.status(id).user.user_name %>
+            </div>
+            <div>
+              <%= link_to raw("<span class='glyphicon glyphicon-remove'></span>"), delete_favorite_path(id), method: 'get', class:'btn_favorite' %>
+            </div>  
+          	<div class="text"><%= @client.status(id).text %></div>
+          </div>
+        </div>
+
+      <% end %>    
+    </div>  
+    <div class="col-md-3 col-sm-3 col-xs-1"></div>
 </div>
+
+
+
+<% current_user.fav_tweets.each do |tweet| %>
+  <div> <%= tweet.id %> </div>
+  <div> <%= tweet.tweet_id %> </div>
+<% end %>  
+
+
+

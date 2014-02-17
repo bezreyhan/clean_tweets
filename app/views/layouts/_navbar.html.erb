@@ -14,10 +14,33 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+
+        <!-- greet user if they are signed in -->
         <% unless current_user == nil %>
           <li><a>Hi <%= current_user.name %></a></li>
-        <% end %>  
-        <li><%=link_to get_page, get_route, class:"btn navbar_login" %></li>
+        <% end %>
+
+        <!-- if on users/new or auths/new show login or signup button -->
+        <% if params[:controller] == "auths" || params[:controller] == "users" %>
+          <li><%=link_to get_page, get_route, class:"btn navbar_login" %></li>
+        <% end %>
+
+        <!-- if called from fav_tweets controller show multiple options -->
+        <% if params[:controller] == "fav_tweets" %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <% if params[:action] == "favorites" %>
+                  <li><%=link_to "Clean Tweets", show_tweets_path %></li>
+                <% else %>
+                  <li><%=link_to "Favorites", favorites_fav_tweet_path %></li>
+                <% end %>  
+                <li class="divider"></li>   
+                <li><%= link_to "Log Out", auths_path, method: 'delete' %></li>
+              </ul>
+          </li>    
+        <% end %>
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
