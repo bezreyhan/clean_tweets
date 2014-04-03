@@ -26,6 +26,7 @@ class FavTweetsController < ApplicationController
 		ht = current_user.twitter.home_timeline(count: 100)
 		## filter out tweets that don't have a link
 		@home_timeline = ht.find_all {|tweet| tweet.text.include?("http")}
+		ranked_tweets = FavTweet.rank_tweets(@home_timeline)
 		binding.pry
 	end
 
