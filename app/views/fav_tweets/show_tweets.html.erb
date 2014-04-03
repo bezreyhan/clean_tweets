@@ -1,6 +1,7 @@
 
 <%= render "layouts/navbar" %>
 
+<%#= "hello" link_to "hi", "http://www.heatandcoolaz.com" %> 
 <div class="container-fluid show_tweets_container">
 	<div class="row">
 		<div class="col-md-3 col-sm-3 col-xs-1"></div>
@@ -9,12 +10,11 @@
 
 				<div class="tweet_shell">
 					<div class="tweet">
-						<!-- <div><#%=tweet.id%></div> -->
 						<div class="user_name"><%=link_to "@"+tweet.user.user_name, "http://www.twitter.com/" + tweet.user.user_name, class:'user_name' %> </div>
 						<div>
 							<%= link_to raw("<span class='glyphicon glyphicon-heart-empty'></span>"), create_fav_tweet_path(tweet.id), method: 'post', class:'btn_favorite' %>
 						</div>	
-						<div class="text"> <%= tweet.text %> </div>
+						<div class="text"> <%= raw(add_link(tweet.text)) %> </div>
 					</div>
 				</div>
 					

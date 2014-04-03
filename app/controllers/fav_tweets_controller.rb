@@ -23,9 +23,10 @@ class FavTweetsController < ApplicationController
 
 	def show_tweets
 		# current_user.from_omniauth(request.env['omniauth.auth'])
-		ht = current_user.twitter.home_timeline
+		ht = current_user.twitter.home_timeline(count: 100)
 		## filter out tweets that don't have a link
 		@home_timeline = ht.find_all {|tweet| tweet.text.include?("http")}
+		binding.pry
 	end
 
 	def create
@@ -33,7 +34,7 @@ class FavTweetsController < ApplicationController
 		# puts "************************#{current_user.twitter.status(params[:format]).user.user_name}******************************"
 		## if that tweet was never created then create and add it to current user's fav_tweets
 		if FavTweet.all.where(tweet_id: params[:format]).empty?
-			@fav_tweet = FavTweet.create(tweet_id: params[:format]) 
+			@fav_tweet = FavTweet.create(tweet_id: params[:format])
 			current_user.fav_tweets << @fav_tweet
 		## if the tweet was created, check if exists in current_user's fav_tweets	
 		elsif check_fav_tweets(params[:format]) == true
@@ -59,16 +60,12 @@ class FavTweetsController < ApplicationController
 	end
 
 	def delete_favorite
-		tweets = current_user.fav_tweets
-		tweets.where(tweet_id: params[:format]).delete_all
-		current_user.save!
-		# tweets.each do |tweet|
-		# 	if tweet.tweet_id == params[:format]
-		# 		tweets - [tweet]
-		# 		current_user.save!
-		# 	end	
-		# break
-		# end
+		cu = current_user
+		tw = FavTweet.find_by(tweet_id: params[:tweet_id])
+		cu.fav_tweet_ids -= [tw.id]
+		tw.user_ids -= [cu.id]
+		cu.save
+		tw.save
 		redirect_to favorites_fav_tweet_path
 	end	
 

@@ -28,7 +28,6 @@ class User
 		self.access_token = auth["credentials"]["token"]
 		self.access_token_secret = auth["credentials"]["secret"]
 		save!
-		# raise self.inspect
 		self
 	end
 
@@ -39,18 +38,17 @@ class User
 		  config.access_token        = access_token
 		  config.access_token_secret = access_token_secret
 		end
-		# @twitter ||= Twitter::REST::Client.new(access_token: access_token, access_token_secret: access_token_secret)
 	end 
 
 	before_save :hash_the_password
 
 	private 
 
-  	def hash_the_password
-  		unless self.password == nil
-	  		self.salt = BCrypt::Engine.generate_salt
-	  		self.hashed_password = BCrypt::Engine.hash_secret self.password, self.salt
-	  		self.password = nil
-	  	end	
-  	end	
+	def hash_the_password
+		unless self.password == nil
+  		self.salt = BCrypt::Engine.generate_salt
+  		self.hashed_password = BCrypt::Engine.hash_secret self.password, self.salt
+  		self.password = nil
+  	end
+	end	
 end

@@ -4,7 +4,6 @@ class AuthsController < ApplicationController
 	# show login form
 	def new
 		if current_user
-			#### !!!! update this when you create a tweets page !!!!!
 			redirect_to twitter_auth_path
 			flash[:notice] = "current_user was true"
 		else

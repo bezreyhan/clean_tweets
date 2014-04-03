@@ -19,7 +19,6 @@ class UsersController < ApplicationController
       @user = User.create(user_params)  
       flash[:notice] = "you signed up. Your email is #{params[:user][:email]}."
       redirect_to new_auth_path(user_params)
-      # redirect_to stream_user_path(user_params)
     end  
   end
 

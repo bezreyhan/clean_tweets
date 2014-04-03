@@ -28,19 +28,20 @@
 }
 
 .fa-twitter {
-  font-size: 112px;
-  text-align: center;
-  width: 10px;
-  margin: 0 auto;
+  font-size: 400px;
+  /*text-align: center;*/
+
+  margin: 50px;
 }
 
-html, body, .container-fluid, .row, .description {
+html, body, .container-fluid,form, .row, .description {
   height: 100%;
 }
 
 .headline {
   font-family: 'Lobster Two';
   font-size: 72px;
+  text-align: center;
 }
 
 .tagline {

@@ -14,9 +14,9 @@
           	<div class="user_name"><%=link_to "@"+current_user.twitter.status(id).user.user_name,"http://www.twitter.com/"+current_user.twitter.status(id).user.user_name %>
             </div>
             <div>
-              <%= link_to raw("<span class='glyphicon glyphicon-remove'></span>"), delete_favorite_path(id), method: 'get', class:'btn_favorite' %>
+              <%= link_to raw("<span class='glyphicon glyphicon-remove'></span>"), delete_favorite_path(id), method: 'delete', class:'btn_favorite' %>
             </div>  
-          	<div class="text"><%= @client.status(id).text %></div>
+          	<div class="text"><%= current_user.twitter.status(id).text %></div>
           </div>
         </div>
 

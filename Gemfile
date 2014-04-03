@@ -7,8 +7,10 @@ gem 'bcrypt-ruby', github: 'codahale/bcrypt-ruby'
 gem 'twitter'
 gem 'omniauth'
 gem 'omniauth-twitter'
-gem 'rails_12factor'
 gem 'bootstrap-sass', '~> 3.1.0'
+group :development, :test do
+  gem 'pry-rails'
+end
 
 
 # Use sqlite3 as the database for Active Record
@@ -43,6 +45,7 @@ end
 group :production do
   gem 'rails_12factor'
 end
+
 
 # group :production do
 #   gem 'pg'
