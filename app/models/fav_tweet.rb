@@ -7,8 +7,6 @@ class FavTweet
 
   has_and_belongs_to_many :users
 
-  
-
   def self.rank_tweets(tweets)
     tweets.each do |tweet|
       retweet_count = tweet.attrs[:retweet_count]
@@ -17,6 +15,10 @@ class FavTweet
       tweet.attrs[:rank] = rank 
     end
     return tweets
+  end
+
+  def self.sort_tweets(ranked_tweets)
+    ranked_tweets.sort_by!{|tweet| -tweet.attrs[:rank]}
   end
 
 end

@@ -25,8 +25,9 @@ class FavTweetsController < ApplicationController
 		# current_user.from_omniauth(request.env['omniauth.auth'])
 		ht = current_user.twitter.home_timeline(count: 100)
 		## filter out tweets that don't have a link
-		@home_timeline = ht.find_all {|tweet| tweet.text.include?("http")}
-		ranked_tweets = FavTweet.rank_tweets(@home_timeline)
+		home_timeline = ht.find_all {|tweet| tweet.text.include?("http")}
+		ranked_tweets = FavTweet.rank_tweets(home_timeline)
+		@sorted_tweets = FavTweet.sort_tweets(ranked_tweets)
 		binding.pry
 	end
 
