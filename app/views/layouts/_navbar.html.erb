@@ -28,7 +28,7 @@
         <!-- if called from fav_tweets controller show multiple options -->
         <% if params[:controller] == "fav_tweets" %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Options<b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <% if params[:action] == "favorites" %>
                   <li><%=link_to "Clean Tweets", show_tweets_path %></li>

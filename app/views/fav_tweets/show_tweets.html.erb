@@ -14,8 +14,10 @@
 						<div>
 							<%= link_to raw("<span class='glyphicon glyphicon-heart-empty'></span>"), create_fav_tweet_path(tweet.id), method: 'post', class:'btn_favorite' %>
 						</div>	
-						<div> <%= tweet.attrs[:rank] %> </div>
-						<div class="text"> <%= raw(add_link(tweet.text)) %> </div>
+						<div>rank: <%= tweet.attrs[:rank] %> </div>
+						<div>rt count: <%= tweet.attrs[:retweet_count] %> </div>
+						<div>fav count: <%= tweet.attrs[:favorite_count] %> </div>
+						<div class="text"> <%= raw(add_link(tweet)) %> </div>
 					</div>
 				</div>
 					
