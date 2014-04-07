@@ -29,7 +29,7 @@ class FavTweet
   def self.rank_tweets(tweets)
     tweets.each do |tweet|
       retweet_count = tweet.attrs[:retweet_count]
-      if tweet.text[0..1] != "RT"
+      if tweet.attrs[:retweeted_status] == nil
         favorite_count = tweet.attrs[:favorite_count]
       else
         favorite_count = tweet.attrs[:retweeted_status][:favorite_count]
