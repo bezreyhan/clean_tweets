@@ -24,7 +24,7 @@ class FavTweetsController < ApplicationController
 	def show_tweets
 		# current_user.from_omniauth(request.env['omniauth.auth'])
 		
-		ht = current_user.twitter.home_timeline(count: 100)
+		ht = current_user.twitter.home_timeline(count: 200)
 		## filter out tweets that don't have a link, or tweets
 		# whose only link is from a picture
 		filtered_tweets = FavTweet.filter_tweets(ht)

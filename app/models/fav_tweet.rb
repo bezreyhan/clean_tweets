@@ -15,7 +15,7 @@ class FavTweet
       # find number of link
       num_links = tweet[:text].scan("http").length
       if num_links > 0 
-        # if a link isnt from a picture or the tweet has more
+        # if a tweets only link isnt from a picture or if the tweet has more
         # than one link then the tweet passes
         if tweet.attrs[:entities][:media] == nil || num_links > 1
           filtered_tweets << tweet
@@ -29,6 +29,7 @@ class FavTweet
   def self.rank_tweets(tweets)
     tweets.each do |tweet|
       retweet_count = tweet.attrs[:retweet_count]
+      # validate that a tweet is not a retweet
       if tweet.attrs[:retweeted_status] == nil
         favorite_count = tweet.attrs[:favorite_count]
       else
