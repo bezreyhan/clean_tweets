@@ -31,7 +31,6 @@ class FavTweetsController < ApplicationController
 		# home_timeline = ht.find_all {|tweet| tweet.text.include?("http")}
 		ranked_tweets = FavTweet.rank_tweets(filtered_tweets)
 		@sorted_tweets = FavTweet.sort_tweets(ranked_tweets)
-		binding.pry
 	end
 
 	def create
