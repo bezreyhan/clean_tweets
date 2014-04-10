@@ -1,11 +1,4 @@
 class FavTweetsController < ApplicationController
-
-	# @@client = Twitter::REST::Client.new do |config|
-	#   config.consumer_key        = "EGtAiRXlnFzX90MPtkHA"
-	#   config.consumer_secret     = "OkDiA6C0Ej2yBg9Jh6Rdhoxc25b5aMfQLRwbY1Mw0U"
-	#   config.access_token        = "1954867038-kJt856202uhmLi0yP4PtUgnLaUHHpzltEpYqaI6"
-	#   config.access_token_secret = "UplyBRhTgfmSE5EICNsTVTV8s9A7u4RypqIYQd5vWXMpu"
-	# end
 	
 	def index
 	end
@@ -34,8 +27,6 @@ class FavTweetsController < ApplicationController
 	end
 
 	def create
-		# puts "************************#{params[:format]}******************************"
-		# puts "************************#{current_user.twitter.status(params[:format]).user.user_name}******************************"
 		## if that tweet was never created then create and add it to current user's fav_tweets
 		if FavTweet.all.where(tweet_id: params[:format]).empty?
 			@fav_tweet = FavTweet.create(tweet_id: params[:format])
@@ -54,13 +45,6 @@ class FavTweetsController < ApplicationController
 	def favorites
 		@fav_tweets = current_user.fav_tweets
 		@fav_tweet_ids = @fav_tweets.map { |tweet| tweet.tweet_id}
-
-		# @client = Twitter::REST::Client.new do |config|
-		#   config.consumer_key        = "EGtAiRXlnFzX90MPtkHA"
-		#   config.consumer_secret     = "OkDiA6C0Ej2yBg9Jh6Rdhoxc25b5aMfQLRwbY1Mw0U"
-		#   config.access_token        = "1954867038-kJt856202uhmLi0yP4PtUgnLaUHHpzltEpYqaI6"
-		#   config.access_token_secret = "UplyBRhTgfmSE5EICNsTVTV8s9A7u4RypqIYQd5vWXMpu"
-		# end
 	end
 
 	def delete_favorite

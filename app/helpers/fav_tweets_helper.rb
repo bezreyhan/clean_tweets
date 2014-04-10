@@ -5,6 +5,7 @@ module FavTweetsHelper
     num_links = tweet[:text].scan("http").length
     iterator = 1
     idx = 0
+    # loop through all all links and add them to the tweet.text
     while iterator <= num_links do 
       start = new_text.index("http", idx)
       # find index of white space or use the length of the text
@@ -18,23 +19,10 @@ module FavTweetsHelper
       else
         new_text = new_text.insert(start, "#{link_to link, tweet.attrs[:entities][:urls][iterator-1][:expanded_url] }" )
       end
-
-
-      # if tweet.attrs[:entities][:media] == nil
-      #   new_text = new_text.insert(start, "#{link_to link, tweet.attrs[:entities][:urls][iterator-1][:expanded_url] }" )
-      # else
-      #   if num_links == iterator 
-      #     new_text = new_text.insert(start, "#{link_to link, tweet.attrs[:entities][:media].first[:media_url_https] }" )
-      #   else
-      #     new_text = new_text.insert(start, "#{link_to link, tweet.attrs[:entities][:urls][iterator-1][:expanded_url] }" )
-      #   end
-      # end
-
       end_of_link = new_text.index("</a>", idx)
       idx = end_of_link + 4
       iterator += 1
     end
     return new_text
   end
-
 end

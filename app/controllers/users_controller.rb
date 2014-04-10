@@ -8,7 +8,12 @@ class UsersController < ApplicationController
   end
 
   def new
-  	@user = User.new
+    if current_user
+      redirect_to twitter_auth_path
+      flash[:notice] = "current_user was true"
+    else
+      @user = User.new
+    end
   end
 
   def create

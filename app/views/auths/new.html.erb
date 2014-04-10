@@ -1,27 +1,33 @@
-<%= render "layouts/navbar" %>
+<span class="hide_mobile"><%= render "layouts/navbar" %></span>
 <%= notice %>
-<div class="container">
+
+<div class="container-fluid">
 	<%= form_for @user, {url:"/auths", method:"post"} do |u| %>
-		<div class="row">
-			<div class="col-md-4 col-sm-3"></div>
+		<div class="row description">
+			<div class="col-md-4 col-sm-3 col-xs-0"></div>
 			<div class="col-md-4 col-sm-6">
-				<h1>Login to Get Your Tweets Cleaned</h1>
+				<!-- only shows on mobile view (navbar is also removed) -->
+				<% if params[:controller] == "auths" || params[:controller] == "users" %>
+      		<%=link_to get_page, get_route, class:"btn show_mobile mobile_login" %>
+    		<% end %>
+				<h1 class="headline">Login</h1>
+				<h2 class="tagline">Get Clean</h2>
 				<div>
 					<%= u.label :email %>
 					<%= u.text_field :email, :place_holder=> "What's your email", class: "form-control" %>
 				</div>
 
-				<div>
+				<div class="password_container">
 					<%= u.label :password %>
 					<%= u.password_field :password, :place_holder=>"Create a Password", class: "form-control" %>
 				</div>
 
-				<div>
-					<%= u.submit 'Submit', class: "btn login" %>
+				<div class="centered">
+					<%= u.submit 'Log in', class: "btn submit" %>
 				</div>
 
 			</div>
-			<div class="col-md-4 col-sm-3"></div>	
+			<div class="col-md-4 col-sm-3 col-xs-1"></div>	
 		</div>	
 	<% end %>	
 </div>
